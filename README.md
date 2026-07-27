@@ -3,7 +3,7 @@
 A fast, responsive, single-page marketing website for **HelloNexa** — tech career
 mentorship & corporate training — hosted on **GitHub Pages**.
 
-**Live site:** https://kratimittal.github.io/
+**Live site:** https://krati13.github.io/
 
 All page text is driven by a single configuration file, so you can update the
 website **without touching any HTML or CSS**.
@@ -101,12 +101,12 @@ Open `styles.css` and edit the variables at the very top:
 
 ## 🚀 Deploying (GitHub Pages)
 
-This repository is named `kratimittal.github.io`, so GitHub Pages serves it
+This repository is named `krati13.github.io`, so GitHub Pages serves it
 automatically from the `main` branch root.
 
 1. Commit and push your changes to the `main` branch.
 2. GitHub Pages rebuilds within ~1 minute.
-3. Visit **https://kratimittal.github.io/**.
+3. Visit **https://krati13.github.io/**.
 
 To enable Pages the first time: **Settings → Pages → Source: Deploy from a branch
 → Branch: `main` / root**.
