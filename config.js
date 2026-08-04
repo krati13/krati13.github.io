@@ -19,6 +19,7 @@ window.SITE_CONFIG = {
   brand: {
     name: "HelloNexa",
     tagline: "Tech Career Mentorship & Corporate Training",
+    author: "Krati Mittal",
     // Email and links used by the "Book a Session" / "Contact" buttons.
     email: "krati.mittal36@gmail.com",
     // Any button whose text matches "mentorship" links here; others link to contact.
@@ -36,6 +37,7 @@ window.SITE_CONFIG = {
     { label: "Personal Mentorship", target: "mentorship" },
     { label: "Corporate Training", target: "corporate" },
     { label: "Courses", target: "courses" },
+    { label: "Blog", target: "blog" },
     { label: "About", target: "why" },
     { label: "Success Stories", target: "testimonials" },
     { label: "FAQ", target: "faq" },
