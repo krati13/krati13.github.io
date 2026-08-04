@@ -28,6 +28,9 @@ window.SITE_CONFIG = {
     social: {
       linkedin: "https://www.linkedin.com/in/krati-mittal/",
       topmate: "https://topmate.io/krati_mittal13"
+    },
+    auth: {
+      google_client_id: "394030770613-epbq4i5opi4ne96jpr2pvaclcbk3mb9r.apps.googleusercontent.com"
     }
   },
 
