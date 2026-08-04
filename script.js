@@ -238,14 +238,78 @@
 
   function renderFinalCta() {
     var d = C.finalCta || {};
-    var s = el("section", "final-cta"); s.id = "contact";
-    var inner = el("div", "container final-cta-inner");
-    inner.appendChild(el("h2", null, esc(d.title)));
-    inner.appendChild(el("p", null, esc(d.description)));
-    var btns = el("div", "btn-row center");
-    if (d.primaryButton) btns.appendChild(ctaButton(d.primaryButton, true));
-    if (d.secondaryButton) btns.appendChild(ctaButton(d.secondaryButton, false));
-    inner.appendChild(btns);
+    var contact = C.contact || null;
+    var s = el("section", contact ? "section" : "final-cta"); s.id = "contact";
+    var inner = el("div", contact ? "container" : "container final-cta-inner");
+
+    if (contact) {
+      inner.appendChild(sectionHead(null, d.title, d.description));
+      var grid = el("div", "two-col");
+
+      // Left: contact form
+      var formCard = el("div", "card");
+      var form = document.createElement("form");
+      (contact.formFields || []).forEach(function (f) {
+        var wrap = el("div");
+        var label = el("label", null, esc(f));
+        label.style.display = "block";
+        label.style.marginBottom = "6px";
+        var input;
+        if (f === "Message") {
+          input = document.createElement("textarea");
+          input.rows = 5;
+          input.name = f;
+          input.placeholder = "Tell us about your goals or requirements...";
+        } else if (f === "I am interested in") {
+          input = document.createElement("select");
+          input.name = f;
+          (contact.interests || []).forEach(function (opt) { var o = document.createElement("option"); o.value = opt; o.textContent = opt; input.appendChild(o); });
+        } else {
+          input = document.createElement("input");
+          input.type = "text"; input.name = f;
+        }
+        wrap.appendChild(label); wrap.appendChild(input); form.appendChild(wrap);
+      });
+
+      var submit = el("button", "btn btn-primary", esc(contact.bookButton || d.primaryButton || "Send Message"));
+      submit.type = "button";
+      submit.addEventListener("click", function () {
+        var parts = [];
+        (contact.formFields || []).forEach(function (f) {
+          var eln = form.querySelector('[name="' + f + '"]');
+          if (eln) parts.push(f + ': ' + (eln.value || ''));
+        });
+        var body = encodeURIComponent(parts.join("\n"));
+        var to = contact.email || (C.brand && C.brand.email) || '';
+        window.location.href = 'mailto:' + to + '?subject=' + encodeURIComponent('Contact from website') + '&body=' + body;
+      });
+      form.appendChild(submit);
+      formCard.appendChild(form);
+      grid.appendChild(formCard);
+
+      // Right: contact info
+      var infoCard = el("div", "card");
+      infoCard.appendChild(el("h3", null, "Contact Information"));
+      if (contact.email) infoCard.appendChild(el("p", null, "✉ " + esc(contact.email)));
+      if (contact.phone) infoCard.appendChild(el("p", null, "📞 " + esc(contact.phone)));
+      if (contact.location) infoCard.appendChild(el("p", null, "📍 " + esc(contact.location)));
+      if (contact.hours) infoCard.appendChild(el("p", null, "🕘 " + esc(contact.hours)));
+      var btnRow = el("div", "btn-row");
+      if (contact.bookButton) btnRow.appendChild(ctaButton(contact.bookButton, true));
+      if (contact.corporateButton) btnRow.appendChild(ctaButton(contact.corporateButton, false));
+      infoCard.appendChild(btnRow);
+      grid.appendChild(infoCard);
+
+      inner.appendChild(grid);
+    } else {
+      inner.appendChild(el("h2", null, esc(d.title)));
+      inner.appendChild(el("p", null, esc(d.description)));
+      var btns = el("div", "btn-row center");
+      if (d.primaryButton) btns.appendChild(ctaButton(d.primaryButton, true));
+      if (d.secondaryButton) btns.appendChild(ctaButton(d.secondaryButton, false));
+      inner.appendChild(btns);
+    }
+
     s.appendChild(inner);
     return s;
   }
