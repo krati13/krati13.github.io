@@ -1,93 +1,138 @@
-﻿[
-  {
-    "title": "Designing a Scalable URL Shortener",
-    "slug": "designing-scalable-url-shortener",
-    "date": "2025-10-31",
-    "author": "Krati Mittal",
-    "url": "https://getsdeready.com/design-a-scalable-url-shortener-like-bitly/",
-    "local_url": "/blogs/designing-scalable-url-shortener.html",
-    "keywords": ["system design","scalability","url shortener"],
-    "content": "<p>An overview of building a scalable URL shortener like Bitly. Covers storage, hashing, collision handling, and capacity planning.</p>"
-  },
-  {
-    "title": "Time and Space Complexity — Practical Guide",
-    "slug": "time-space-complexity-practical",
-    "date": "2025-09-12",
-    "author": "Krati Mittal",
-    "url": "https://getsdeready.com/time-and-space-complexity/",
-    "keywords": ["dsa","complexity","algorithms"],
-    "content": "<p>Understanding Big-O with real examples and how to reason about algorithm performance in interviews and production.</p>"
-  },
-  {
-    "title": "Caching Strategies for High Traffic Systems",
-    "slug": "caching-strategies-high-traffic",
-    "date": "2025-08-20",
-    "author": "Krati Mittal",
-    "url": "https://getsdeready.com/caching-strategies/",
-    "keywords": ["caching","performance","system design"],
-    "content": "<p>When and how to use caches, cache invalidation strategies, and consistency trade-offs.</p>"
-  },
-  {
-    "title": "Load Balancing Patterns Explained",
-    "slug": "load-balancing-patterns",
-    "date": "2025-07-05",
-    "author": "Krati Mittal",
-    "url": "https://getsdeready.com/load-balancing-patterns/",
-    "keywords": ["load balancing","networking","system design"],
-    "content": "<p>Compare round-robin, least-connections, IP-hash, and health checks — plus real-world considerations.</p>"
-  },
-  {
-    "title": "Designing Microservices: Best Practices",
-    "slug": "designing-microservices-best-practices",
-    "date": "2025-06-18",
-    "author": "Krati Mittal",
-    "url": "https://getsdeready.com/microservices-best-practices/",
-    "keywords": ["microservices","architecture","api design"],
-    "content": "<p>Decomposition, data ownership, API contracts, and operational practices for maintainable microservices.</p>"
-  },
-  {
-    "title": "Kafka in Production: Common Pitfalls",
-    "slug": "kafka-production-pitfalls",
-    "date": "2025-05-02",
-    "author": "Krati Mittal",
-    "url": "https://getsdeready.com/kafka-production-pitfalls/",
-    "keywords": ["kafka","streaming","distributed"],
-    "content": "<p>Lessons from running Kafka at scale: partitioning, retention, consumer groups, and monitoring.</p>"
-  },
-  {
-    "title": "Spring Boot Performance Tips",
-    "slug": "spring-boot-performance-tips",
-    "date": "2025-04-10",
-    "author": "Krati Mittal",
-    "url": "https://getsdeready.com/spring-boot-performance/",
-    "keywords": ["java","spring boot","performance"],
-    "content": "<p>Tune JVM, connection pools, async processing, and profiling strategies for Spring Boot apps.</p>"
-  },
-  {
-    "title": "AI Backend Engineering — Building Robust APIs",
-    "slug": "ai-backend-engineering-apis",
-    "date": "2025-03-15",
-    "author": "Krati Mittal",
-    "url": "https://getsdeready.com/ai-backend-apis/",
-    "keywords": ["ai","backend","api"],
-    "content": "<p>Design patterns for serving ML models, batching requests, caching embeddings, and cost control.</p>"
-  },
-  {
-    "title": "System Design Interview: End-to-End Strategy",
-    "slug": "system-design-interview-strategy",
-    "date": "2025-02-01",
-    "author": "Krati Mittal",
-    "url": "https://getsdeready.com/system-design-interview-strategy/",
-    "keywords": ["system design","interview","strategy"],
-    "content": "<p>A framework for approaching system design interviews, clarifying requirements, and scoping trade-offs.</p>"
-  },
-  {
-    "title": "Top DSA Problems for Interviews",
-    "slug": "top-dsa-problems-interviews",
-    "date": "2025-01-10",
-    "author": "Krati Mittal",
-    "url": "https://getsdeready.com/top-dsa-problems/",
-    "keywords": ["dsa","interview","problems"],
-    "content": "<p>Curated list of common and high-impact DSA problems with explanations and variants to practice.</p>"
-  }
-]
+﻿{
+    "value":  [
+                  {
+                      "title":  "Designing a Scalable URL Shortener",
+                      "slug":  "designing-scalable-url-shortener",
+                      "date":  "2025-10-31",
+                      "author":  "Krati Mittal",
+                      "url":  "https://getsdeready.com/design-a-scalable-url-shortener-like-bitly/",
+                      "local_url":  "/blogs/designing-scalable-url-shortener.html",
+                      "keywords":  [
+                                       "system design",
+                                       "scalability",
+                                       "url shortener"
+                                   ],
+                      "content":  "\u003cp\u003eAn overview of building a scalable URL shortener like Bitly. Covers storage, hashing, collision handling, and capacity planning.\u003c/p\u003e"
+                  },
+                  {
+                      "title":  "Time and Space Complexity — Practical Guide",
+                      "slug":  "time-space-complexity-practical",
+                      "date":  "2025-09-12",
+                      "author":  "Krati Mittal",
+                      "url":  "https://getsdeready.com/time-and-space-complexity/",
+                      "keywords":  [
+                                       "dsa",
+                                       "complexity",
+                                       "algorithms"
+                                   ],
+                      "content":  "\u003cp\u003eUnderstanding Big-O with real examples and how to reason about algorithm performance in interviews and production.\u003c/p\u003e",
+                      "local_url":  "/blogs/time-space-complexity-practical.md"
+                  },
+                  {
+                      "title":  "Caching Strategies for High Traffic Systems",
+                      "slug":  "caching-strategies-high-traffic",
+                      "date":  "2025-08-20",
+                      "author":  "Krati Mittal",
+                      "url":  "https://getsdeready.com/caching-strategies/",
+                      "keywords":  [
+                                       "caching",
+                                       "performance",
+                                       "system design"
+                                   ],
+                      "content":  "\u003cp\u003eWhen and how to use caches, cache invalidation strategies, and consistency trade-offs.\u003c/p\u003e",
+                      "local_url":  "/blogs/caching-strategies-high-traffic.md"
+                  },
+                  {
+                      "title":  "Load Balancing Patterns Explained",
+                      "slug":  "load-balancing-patterns",
+                      "date":  "2025-07-05",
+                      "author":  "Krati Mittal",
+                      "url":  "https://getsdeready.com/load-balancing-patterns/",
+                      "keywords":  [
+                                       "load balancing",
+                                       "networking",
+                                       "system design"
+                                   ],
+                      "content":  "\u003cp\u003eCompare round-robin, least-connections, IP-hash, and health checks — plus real-world considerations.\u003c/p\u003e"
+                  },
+                  {
+                      "title":  "Designing Microservices: Best Practices",
+                      "slug":  "designing-microservices-best-practices",
+                      "date":  "2025-06-18",
+                      "author":  "Krati Mittal",
+                      "url":  "https://getsdeready.com/microservices-best-practices/",
+                      "keywords":  [
+                                       "microservices",
+                                       "architecture",
+                                       "api design"
+                                   ],
+                      "content":  "\u003cp\u003eDecomposition, data ownership, API contracts, and operational practices for maintainable microservices.\u003c/p\u003e"
+                  },
+                  {
+                      "title":  "Kafka in Production: Common Pitfalls",
+                      "slug":  "kafka-production-pitfalls",
+                      "date":  "2025-05-02",
+                      "author":  "Krati Mittal",
+                      "url":  "https://getsdeready.com/kafka-production-pitfalls/",
+                      "keywords":  [
+                                       "kafka",
+                                       "streaming",
+                                       "distributed"
+                                   ],
+                      "content":  "\u003cp\u003eLessons from running Kafka at scale: partitioning, retention, consumer groups, and monitoring.\u003c/p\u003e"
+                  },
+                  {
+                      "title":  "Spring Boot Performance Tips",
+                      "slug":  "spring-boot-performance-tips",
+                      "date":  "2025-04-10",
+                      "author":  "Krati Mittal",
+                      "url":  "https://getsdeready.com/spring-boot-performance/",
+                      "keywords":  [
+                                       "java",
+                                       "spring boot",
+                                       "performance"
+                                   ],
+                      "content":  "\u003cp\u003eTune JVM, connection pools, async processing, and profiling strategies for Spring Boot apps.\u003c/p\u003e"
+                  },
+                  {
+                      "title":  "AI Backend Engineering — Building Robust APIs",
+                      "slug":  "ai-backend-engineering-apis",
+                      "date":  "2025-03-15",
+                      "author":  "Krati Mittal",
+                      "url":  "https://getsdeready.com/ai-backend-apis/",
+                      "keywords":  [
+                                       "ai",
+                                       "backend",
+                                       "api"
+                                   ],
+                      "content":  "\u003cp\u003eDesign patterns for serving ML models, batching requests, caching embeddings, and cost control.\u003c/p\u003e"
+                  },
+                  {
+                      "title":  "System Design Interview: End-to-End Strategy",
+                      "slug":  "system-design-interview-strategy",
+                      "date":  "2025-02-01",
+                      "author":  "Krati Mittal",
+                      "url":  "https://getsdeready.com/system-design-interview-strategy/",
+                      "keywords":  [
+                                       "system design",
+                                       "interview",
+                                       "strategy"
+                                   ],
+                      "content":  "\u003cp\u003eA framework for approaching system design interviews, clarifying requirements, and scoping trade-offs.\u003c/p\u003e"
+                  },
+                  {
+                      "title":  "Top DSA Problems for Interviews",
+                      "slug":  "top-dsa-problems-interviews",
+                      "date":  "2025-01-10",
+                      "author":  "Krati Mittal",
+                      "url":  "https://getsdeready.com/top-dsa-problems/",
+                      "keywords":  [
+                                       "dsa",
+                                       "interview",
+                                       "problems"
+                                   ],
+                      "content":  "\u003cp\u003eCurated list of common and high-impact DSA problems with explanations and variants to practice.\u003c/p\u003e"
+                  }
+              ],
+    "Count":  10
+}
