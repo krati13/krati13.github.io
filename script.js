@@ -336,7 +336,7 @@
     var col3 = el("div", "footer-col");
     var social = C.brand && C.brand.social || {};
     var socialRow = el("div", "social-row");
-    [["LinkedIn", social.linkedin], ["Twitter", social.twitter], ["YouTube", social.youtube]]
+    [["LinkedIn", social.linkedin], ["Topmate", social.topmate], ["Twitter", social.twitter], ["YouTube", social.youtube]]
       .forEach(function (pair) {
         if (pair[1]) {
           var a = el("a", "social-link", esc(pair[0]));
