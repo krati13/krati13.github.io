@@ -25,7 +25,7 @@ window.SITE_CONFIG = {
     mentorshipLink: "mailto:krati.mittal36@gmail.com?subject=1:1%20Mentorship",
     corporateLink: "mailto:krati.mittal36@gmail.com?subject=Corporate%20Training",
     social: {
-      linkedin: "https://www.linkedin.com/in/krati-mittal-",
+      linkedin: "https://www.linkedin.com/in/krati-mittal/",
       topmate: "https://topmate.io/krati_mittal13"
     }
   },
