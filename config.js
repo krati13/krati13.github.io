@@ -20,14 +20,13 @@ window.SITE_CONFIG = {
     name: "HelloNexa",
     tagline: "Tech Career Mentorship & Corporate Training",
     // Email and links used by the "Book a Session" / "Contact" buttons.
-    email: "hello@hellonexa.com",
+    email: "krati.mittal36@gmail.com",
     // Any button whose text matches "mentorship" links here; others link to contact.
-    mentorshipLink: "mailto:hello@hellonexa.com?subject=1:1%20Mentorship",
-    corporateLink: "mailto:hello@hellonexa.com?subject=Corporate%20Training",
+    mentorshipLink: "mailto:krati.mittal36@gmail.com?subject=1:1%20Mentorship",
+    corporateLink: "mailto:krati.mittal36@gmail.com?subject=Corporate%20Training",
     social: {
-      linkedin: "https://www.linkedin.com/",
-      twitter: "https://twitter.com/",
-      youtube: "https://www.youtube.com/"
+      linkedin: "https://www.linkedin.com/in/krati-mittal-",
+      topmate: "https://topmate.io/krati_mittal13"
     }
   },
 
@@ -254,17 +253,48 @@ window.SITE_CONFIG = {
 
   /* ---- Final Call-to-Action --------------------------------------------- */
   finalCta: {
-    title: "Ready to Take the Next Step?",
+      title: "Get in Touch",
     description:
-      "Whether you're an engineer aiming for your next career milestone or an organization investing in technical excellence, we're here to help.",
-    primaryButton: "Book a 1:1 Mentorship Session",
-    secondaryButton: "Request Corporate Training"
+        "Let's build your career or upskill your team. Our team typically responds within 24 hours.",
+      primaryButton: "Get in Touch",
+      secondaryButton: "Book a Mentorship Session"
   },
+
+    /* ---- Contact (renders a form + info) ---------------------------------- */
+    contact: {
+      email: "krati.mittal36@gmail.com",
+      phone: "+91 7042955025",
+      location: "Hyderabad, India",
+      hours: "Mon–Sat 9:00 AM – 7:00 PM IST",
+      formFields: [
+        "Full Name",
+        "Email Address",
+        "Phone Number",
+        "Company (Optional)",
+        "I am interested in",
+        "Message"
+      ],
+      interests: [
+        "1:1 Career Mentorship",
+        "Resume Review",
+        "Mock Interview",
+        "DSA Preparation",
+        "System Design",
+        "Java Backend",
+        "AI Backend Engineering",
+        "Corporate Training",
+        "University Training",
+        "Other"
+      ],
+      bookButton: "Book a Mentorship Session",
+      corporateButton: "Request Corporate Training"
+    },
+
 
   /* ---- Footer ------------------------------------------------------------ */
   footer: {
     contactTitle: "Contact",
-    contactText: "Have a question? Reach out and we'll get back to you.",
+    contactText: "Email: krati.mittal36@gmail.com | Phone: +91 7042955025",
     copyright: "HelloNexa. All rights reserved."
   }
 };
