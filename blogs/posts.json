@@ -5,6 +5,7 @@
     "date": "2025-10-31",
     "author": "Krati Mittal",
     "url": "https://getsdeready.com/design-a-scalable-url-shortener-like-bitly/",
+    "local_url": "/blogs/designing-scalable-url-shortener.html",
     "keywords": ["system design","scalability","url shortener"],
     "content": "<p>An overview of building a scalable URL shortener like Bitly. Covers storage, hashing, collision handling, and capacity planning.</p>"
   },

@@ -438,24 +438,27 @@
     // If stored content is short, try fetching full article from original URL and inject its main content.
     try {
       var rawLength = (stripHtml(p.content || '') || '').trim().length;
-      if ((rawLength < 220) && p.url) {
-        fetch(p.url).then(function(r){ return r.text(); }).then(function(html){
-          try {
-            var parser = new DOMParser();
-            var doc = parser.parseFromString(html, 'text/html');
-            var selectors = ['div[data-elementor-type="wp-post"]', 'article', '.entry-content', '.post-content', '.content', '#content'];
-            var found = null;
-            for (var i=0;i<selectors.length;i++) { var elsel = doc.querySelector(selectors[i]); if (elsel) { found = elsel; break; } }
-            if (found) {
-              // sanitize minimally: keep innerHTML but remove scripts
-              Array.from(found.querySelectorAll('script')).forEach(function(s){ s.remove(); });
-              content.innerHTML = found.innerHTML;
-            } else {
-              // fallback: inject whole body
-              content.innerHTML = doc.body ? doc.body.innerHTML : html;
-            }
-          } catch(e) { console.warn('Could not parse remote article', e); }
-        }).catch(function(err){ console.warn('Failed to fetch remote article', err); });
+      if (rawLength < 220) {
+        var toFetch = p.local_url || p.url;
+        if (toFetch) {
+          fetch(toFetch).then(function(r){ return r.text(); }).then(function(html){
+            try {
+              var parser = new DOMParser();
+              var doc = parser.parseFromString(html, 'text/html');
+              var selectors = ['div[data-elementor-type="wp-post"]', 'article', '.entry-content', '.post-content', '.content', '#content'];
+              var found = null;
+              for (var i=0;i<selectors.length;i++) { var elsel = doc.querySelector(selectors[i]); if (elsel) { found = elsel; break; } }
+              if (found) {
+                // sanitize minimally: keep innerHTML but remove scripts
+                Array.from(found.querySelectorAll('script')).forEach(function(s){ s.remove(); });
+                content.innerHTML = found.innerHTML;
+              } else {
+                // fallback: inject whole body
+                content.innerHTML = doc.body ? doc.body.innerHTML : html;
+              }
+            } catch(e) { console.warn('Could not parse remote article', e); }
+          }).catch(function(err){ console.warn('Failed to fetch remote article', err); });
+        }
       }
     } catch(e) { console.warn('Error while attempting to fetch full article', e); }
 
