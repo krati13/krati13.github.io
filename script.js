@@ -287,9 +287,22 @@
           var eln = form.querySelector('[name="' + f + '"]');
           if (eln) parts.push(f + ': ' + (eln.value || ''));
         });
-        var body = encodeURIComponent(parts.join("\n"));
-        var to = contact.email || (C.brand && C.brand.email) || '';
-        window.location.href = 'mailto:' + to + '?subject=' + encodeURIComponent('Contact from website') + '&body=' + body;
+        var message = parts.join("\n");
+        // prefer contact.phone, fallback to brand.phone; strip non-digits
+        var phoneRaw = (contact.phone || (C.brand && C.brand.phone) || '');
+        var digits = (phoneRaw + '').replace(/\D/g, '');
+        // if no country code present and number length is 10, assume India (91)
+        if (digits.length === 10) digits = '91' + digits;
+        if (digits.length === 0) {
+          // fallback to email mailto if no phone configured
+          var body = encodeURIComponent(message);
+          var to = contact.email || (C.brand && C.brand.email) || '';
+          window.location.href = 'mailto:' + to + '?subject=' + encodeURIComponent('Contact from website') + '&body=' + body;
+          return;
+        }
+        var waLink = 'https://wa.me/' + digits + '?text=' + encodeURIComponent(message);
+        // open WhatsApp in new tab/window
+        window.open(waLink, '_blank');
       });
       form.appendChild(submit);
       formCard.appendChild(form);
