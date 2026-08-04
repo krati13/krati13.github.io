@@ -72,6 +72,14 @@
       var h = document.getElementById("site-header");
       if (h) h.classList.toggle("scrolled", window.scrollY > 10);
     });
+
+    // auth area (google sign-in button / user badge)
+    try {
+      var headerInner = document.querySelector('#site-header .nav-inner');
+      if (headerInner && !document.getElementById('auth-area')) {
+        var aa = document.createElement('div'); aa.id = 'auth-area'; aa.className = 'auth-area'; headerInner.appendChild(aa);
+      }
+    } catch(e) {}
   }
 
   /* ---- sections ---------------------------------------------------------- */
@@ -355,6 +363,43 @@
     foot.appendChild(bar);
   }
 
+  /* ---- Auth helpers (Google Sign-In) ------------------------------------ */
+  function decodeJwt (tok) {
+    try { var pl = tok.split('.')[1]; pl = pl.replace(/-/g,'+').replace(/_/g,'/'); while (pl.length % 4) { pl += '='; } return JSON.parse(atob(pl)); } catch (e) { return null; }
+  }
+  function handleGoogleCredential(resp) {
+    var payload = decodeJwt(resp && resp.credential ? resp.credential : '');
+    if (payload) {
+      C.currentUser = { name: payload.name, email: payload.email, picture: payload.picture };
+      renderAuthState();
+    }
+  }
+  function renderAuthState() {
+    var authArea = document.getElementById('auth-area');
+    if (!authArea) return;
+    if (C.currentUser) {
+      authArea.innerHTML = '<div class="user-badge"><img src="'+esc(C.currentUser.picture||'')+'" alt="" class="avatar"/><span class="user-name">'+esc(C.currentUser.name||C.currentUser.email||'User')+'</span> <button id="signout-btn" class="btn">Sign out</button></div>';
+      var btn = document.getElementById('signout-btn');
+      if (btn) btn.addEventListener('click', function(){ C.currentUser=null; if (window.google && google.accounts && google.accounts.id) try { google.accounts.id.disableAutoSelect(); } catch(e){}; initAuth(); });
+    } else {
+      authArea.innerHTML = '<div id="google-signin-button"></div>';
+      if (window.google && google.accounts && google.accounts.id && C.auth && C.auth.google_client_id) {
+        google.accounts.id.renderButton(document.getElementById('google-signin-button'), { theme: 'outline', size: 'medium' });
+      }
+    }
+  }
+  function initAuth() {
+    var cfg = C.auth || {};
+    if (!cfg.google_client_id || !(window.google && google.accounts && google.accounts.id)) return;
+    if (!document.getElementById('auth-area')) {
+      var headerInner = document.querySelector('#site-header .nav-inner');
+      if (headerInner) { var aa = document.createElement('div'); aa.id = 'auth-area'; aa.className='auth-area'; headerInner.appendChild(aa); }
+    }
+    // initialize Google ID
+    try { google.accounts.id.initialize({ client_id: cfg.google_client_id, callback: handleGoogleCredential }); } catch (e) {}
+    renderAuthState();
+  }
+
   /* ---- Blog helpers & rendering ----------------------------------------- */
   function stripHtml(html) {
     var tmp = document.createElement('div'); tmp.innerHTML = html || ''; return tmp.textContent || tmp.innerText || '';
@@ -421,8 +466,22 @@
     inner.appendChild(controls);
 
     var listWrap = el('div'); listWrap.id = 'blog-list-wrap';
-    listWrap.appendChild(renderBlogList(C.blogPosts || []));
+    var allPosts = C.blogPosts || [];
+    var initialPosts = allPosts.slice(0,3);
+    listWrap.appendChild(renderBlogList(initialPosts));
     inner.appendChild(listWrap);
+    if ((allPosts || []).length > 3) {
+      var seeMoreWrap = el('div', 'center');
+      var seeMoreBtn = el('button', 'btn btn-secondary', 'See More Blogs');
+      seeMoreBtn.type = 'button';
+      seeMoreBtn.addEventListener('click', function(){
+        document.getElementById('blog-list-wrap').innerHTML = '';
+        document.getElementById('blog-list-wrap').appendChild(renderBlogList(allPosts));
+        seeMoreBtn.style.display = 'none';
+      });
+      seeMoreWrap.appendChild(seeMoreBtn);
+      inner.appendChild(seeMoreWrap);
+    }
 
     // Create blog form (download markdown)
     inner.appendChild(renderCreateBlogForm());
@@ -467,6 +526,8 @@
     } catch (e) { C.blogPosts = C.blogPosts || []; }
 
     renderBrandAndNav();
+    // initialize auth (Google Sign-In) if configured
+    if (typeof initAuth === "function") initAuth();
     var app = document.getElementById("app");
 
     // If hash points to a blog post, render that first
