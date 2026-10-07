@@ -17,7 +17,7 @@
 window.SITE_CONFIG = {
   /* ---- Brand / basic info ------------------------------------------------ */
   brand: {
-    name: "HelloNexa",
+    name: "Vroom Analytics",
     tagline: "Tech Career Mentorship & Corporate Training",
     author: "Krati Mittal",
     // Email and links used by the "Book a Session" / "Contact" buttons.
@@ -300,6 +300,6 @@ window.SITE_CONFIG = {
   footer: {
     contactTitle: "Contact",
     contactText: "Email: krati.mittal36@gmail.com | Phone: +91 7042955025",
-    copyright: "HelloNexa. All rights reserved."
+    copyright: "Vroom Analytics. All rights reserved."
   }
 };
